@@ -1,5 +1,6 @@
+import getProducts from '@/services/getProducts'
 import Product from '@/types/Product'
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 import { InitialType } from './types/products'
 
 const InitialValue: InitialType = {
@@ -14,6 +15,13 @@ interface Props {
 
 const ProductsProvider = ({ children }: Props) => {
   const [products, setProducts] = useState<Product[]>([])
+
+  useEffect(() => {
+    ;(async () => {
+      const data = await getProducts()
+      if (data) setProducts(data)
+    })()
+  }, [])
 
   return (
     <ProductsContext.Provider
