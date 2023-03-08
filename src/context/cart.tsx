@@ -29,7 +29,7 @@ const CartProvider = ({ children }: Props) => {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('cart')) return
+    if (localStorage.getItem('cart') && !cart.length) return
 
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])
