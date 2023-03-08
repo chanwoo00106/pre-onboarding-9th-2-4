@@ -1,3 +1,4 @@
+import { CartContext } from '@/context/cart'
 import Product from '@/types/Product'
 import {
   Button,
@@ -11,12 +12,15 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
+import { memo, useContext } from 'react'
 
 interface Props {
   product: Product
 }
 
 const ProductCard = ({ product }: Props) => {
+  const { addProduct } = useContext(CartContext)
+
   return (
     <Card maxW='sm'>
       <CardBody>
@@ -37,7 +41,11 @@ const ProductCard = ({ product }: Props) => {
       <Divider />
       <CardFooter>
         <ButtonGroup spacing='2'>
-          <Button variant='solid' colorScheme='blue'>
+          <Button
+            variant='solid'
+            colorScheme='blue'
+            onClick={() => addProduct(product.idx)}
+          >
             예약
           </Button>
         </ButtonGroup>
@@ -46,4 +54,4 @@ const ProductCard = ({ product }: Props) => {
   )
 }
 
-export default ProductCard
+export default memo(ProductCard)
