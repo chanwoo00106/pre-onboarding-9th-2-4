@@ -7,7 +7,7 @@ const InitialValue: InitialType = {
   products: [],
 }
 
-const ProductsContext = createContext<InitialType>(InitialValue)
+export const ProductsContext = createContext<InitialType>(InitialValue)
 
 interface Props {
   children: ReactNode
