@@ -12,7 +12,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
-import { memo, useContext } from 'react'
+import { useContext } from 'react'
 
 interface Props {
   product: Product
@@ -54,4 +54,4 @@ const ProductCard = ({ product }: Props) => {
   )
 }
 
-export default memo(ProductCard)
+export default ProductCard
