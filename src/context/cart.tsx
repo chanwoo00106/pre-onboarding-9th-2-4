@@ -1,10 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 import { InitialType } from './types/cart'
 
 export const CartContext = createContext<InitialType>({
@@ -35,6 +29,8 @@ const CartProvider = ({ children }: Props) => {
   }
 
   useEffect(() => {
+    if (localStorage.getItem('cart')) return
+
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])
 
